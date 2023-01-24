@@ -1,8 +1,10 @@
 import 'package:conference_app/service/url_launcher_service.dart';
 import 'package:conference_app/ui/views/contact_us/contact_us_view.dart';
+import 'package:conference_app/ui/views/home_view/drawer/zoom_drawer_view.dart';
 import 'package:conference_app/ui/views/home_view/home_view.dart';
 import 'package:conference_app/ui/views/hotels/hotels_view.dart';
 import 'package:conference_app/ui/views/web_view/web_view.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -12,6 +14,7 @@ import 'package:stacked_services/stacked_services.dart';
     CupertinoRoute(page: RegisterWebView),
     CupertinoRoute(page: ContactUsView),
     CupertinoRoute(page: HotelsView),
+    CupertinoRoute(page: ZoomDrawerView),
   ],
   dependencies: [
     LazySingleton(classType: NavigationService),
