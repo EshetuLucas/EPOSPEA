@@ -11,19 +11,21 @@ class StartupViewModel extends BaseViewModel {
 
   Future<void> runStartupLogic() async {
     await Future.delayed(Duration(seconds: 1));
-    await _checkForUpdate();
+    _checkForUpdate();
   }
 
-  Future<void> _checkForUpdate() async {
+  void _checkForUpdate() {
     try {
-      final info = await InAppUpdate.checkForUpdate();
-      if (info.updateAvailability == UpdateAvailability.updateAvailable) {
-        final appUpdateResult = await InAppUpdate.startFlexibleUpdate();
-        if (appUpdateResult == AppUpdateResult.success) {
-          //App Update successful
-          await InAppUpdate.completeFlexibleUpdate();
+      InAppUpdate.checkForUpdate().then((value) {
+        if (value.updateAvailability == UpdateAvailability.updateAvailable) {
+          InAppUpdate.startFlexibleUpdate().then((value) {
+            if (value == AppUpdateResult.success) {
+              //App Update successful
+              InAppUpdate.completeFlexibleUpdate();
+            }
+          });
         }
-      }
+      });
     } catch (e) {
       log.e('Unable to update the app: $e');
     } finally {

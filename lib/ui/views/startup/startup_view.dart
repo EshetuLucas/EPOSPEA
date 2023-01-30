@@ -22,6 +22,7 @@ class StartupView extends StatelessWidget {
         body: Center(
           child: CircularProgressIndicator(
             color: kcWhite,
+            strokeWidth: 10,
           ),
         ),
       ),
